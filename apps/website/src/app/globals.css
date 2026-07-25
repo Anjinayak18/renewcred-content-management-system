@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #e5e7eb;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --secondary: #0f172a;
+
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+
+  --muted: #64748b;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --border: #334155;
+
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+
+  --secondary: #f8fafc;
+
+  --success: #22c55e;
+  --warning: #fbbf24;
+  --danger: #ef4444;
+
+  --muted: #94a3b8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, sans-serif;
+  min-height: 100vh;
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .card {
+    @apply rounded-2xl border bg-white p-6 shadow-card;
+    border-color: var(--border);
+    background: var(--card);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background: var(--primary);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-hover);
+  }
+
+  .btn-secondary {
+    @apply btn border;
+    border-color: var(--border);
+    color: var(--foreground);
+  }
+
+  .input {
+    @apply w-full rounded-xl border px-4 py-3 outline-none transition;
+    border-color: var(--border);
+    background: var(--card);
+    color: var(--foreground);
+  }
+
+  .input:focus {
+    border-color: var(--primary);
+  }
+
+  .section-title {
+    @apply text-4xl font-bold md:text-5xl;
+  }
+
+  .section-subtitle {
+    color: var(--muted);
+    @apply mt-4 text-lg;
+  }
+}
+
+@layer utilities {
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .bg-card {
+    background: var(--card);
+  }
+
+  .border-default {
+    border-color: var(--border);
+  }
+
+  .text-primary {
+    color: var(--primary);
+  }
+}

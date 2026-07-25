@@ -1,0 +1,69 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "forceConsistentCasingInFileNames": true,
+
+    "resolveJsonModule": true,
+
+    "skipLibCheck": true,
+
+    "sourceMap": true,
+
+    "declaration": true,
+
+    "removeComments": false,
+
+    "isolatedModules": true,
+
+    "noFallthroughCasesInSwitch": true,
+
+    "noUncheckedIndexedAccess": true,
+
+    "incremental": true,
+
+    "types": ["node"],
+
+    "baseUrl": "./src",
+
+    "paths": {
+      "@/*": ["./*.ts"],
+      "@config/*": ["./config/*.ts"],
+      "@controllers/*": ["./controllers/*.ts"],
+      "@middleware/*": ["./middleware/*.ts"],
+      "@models/*": ["./models/*.ts"],
+      "@repositories/*": ["./repositories/*.ts"],
+      "@routes/*": ["./routes/*.ts"],
+      "@services/*": ["./services/*.ts"],
+      "@validators/*": ["./validators/*.ts"],
+      "@utils/*": ["./utils/*.ts"],
+      "@constants/*": ["./constants/*.ts"],
+      "@types/*": ["./types/*.ts"]
+    }
+  },
+
+  "include": ["src"],
+
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

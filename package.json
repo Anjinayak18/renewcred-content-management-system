@@ -1,0 +1,15 @@
+{
+  "name": "renewcred-cms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-ready Headless CMS with Admin Panel and Public Website",
+  "author": "Anji",
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev": "echo \"Run apps individually\"",
+    "build": "echo \"Build all workspaces\"",
+    "lint": "echo \"Run lint in all workspaces\"",
+    "format": "echo \"Run prettier\""
+  }
+}

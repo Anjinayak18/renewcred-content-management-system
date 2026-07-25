@@ -1,0 +1,76 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: renewcred-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: renewcred_cms
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - renewcred-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: renewcred-backend
+    restart: unless-stopped
+    env_file:
+      - .env.example
+    depends_on:
+      - mongodb
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - renewcred-network
+
+  admin:
+    build:
+      context: ./apps/admin
+      dockerfile: Dockerfile
+    container_name: renewcred-admin
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:5000/api/v1
+    volumes:
+      - ./apps/admin:/app
+      - /app/node_modules
+    networks:
+      - renewcred-network
+
+  website:
+    build:
+      context: ./apps/website
+      dockerfile: Dockerfile
+    container_name: renewcred-website
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3001:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://backend:5000/api/v1
+    volumes:
+      - ./apps/website:/app
+      - /app/node_modules
+    networks:
+      - renewcred-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  renewcred-network:
+    driver: bridge
