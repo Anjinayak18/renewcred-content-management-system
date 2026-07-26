@@ -3,8 +3,7 @@ import path from "node:path";
 
 import multer from "multer";
 
-import { env } from "@config/env";
-
+import { env } from "../config/env";
 const uploadDirectory = path.resolve("src/uploads");
 
 /**

@@ -3,8 +3,8 @@ import path from "node:path";
 
 import { Request, Response } from "express";
 
-import { HTTP_STATUS } from "@constants/httpStatus";
-import logger from "@utils/logger";
+import { HTTP_STATUS } from "../constants/httpStatus";
+import logger from "../utils/logger";
 
 const uploadDirectory = path.resolve("src/uploads");
 

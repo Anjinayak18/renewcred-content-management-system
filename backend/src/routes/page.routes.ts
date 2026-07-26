@@ -7,12 +7,12 @@ import {
   getPages,
   publishPage,
   updatePage
-} from "@controllers/page.controller";
+} from "../controllers/page.controller";
 
 import {
   authenticate,
   authorize
-} from "@middleware/auth.middleware";
+} from "../middleware/auth.middleware";
 
 const router: ExpressRouter = Router();
 

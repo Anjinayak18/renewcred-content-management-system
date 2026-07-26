@@ -3,10 +3,10 @@ import { Request, Response } from "express";
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import Page, { PageStatus } from "@models/Page";
-import User from "@models/User";
-import { HTTP_STATUS } from "@constants/httpStatus";
-import logger from "@utils/logger";
+import Page, { PageStatus } from "../models/Page";
+import User from "../models/User";
+import { HTTP_STATUS } from "../constants/httpStatus";
+import logger from "../utils/logger";
 
 /**
  * ==========================================================

@@ -4,11 +4,10 @@ import {
   login,
   logout,
   me
-} from "@controllers/auth.controller";
-
+} from "../controllers/auth.controller";
 import {
   authenticate
-} from "@middleware/auth.middleware";
+} from "../middleware/auth.middleware";
 
 const router: ExpressRouter = Router();
 

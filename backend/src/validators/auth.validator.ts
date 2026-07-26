@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 
-import { HTTP_STATUS } from "@constants/httpStatus";
-
+import { HTTP_STATUS } from "../constants/httpStatus";
 /**
  * ==========================================================
  * Login Schema

@@ -1,12 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+"target": "ES2020",
     "lib": ["ES2022"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+
+    "module": "CommonJS",
+"moduleResolution": "Node",
 
     "rootDir": "./src",
     "outDir": "./dist",
+
+    "baseUrl": ".",
+
+    "paths": {
+      "@/*": ["src/*"],
+      "@config/*": ["src/config/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@models/*": ["src/models/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
+      "@validators/*": ["src/validators/*"],
+      "@utils/*": ["src/utils/*"],
+      "@constants/*": ["src/constants/*"],
+      "@types/*": ["src/types/*"]
+    },
 
     "strict": true,
     "noImplicitAny": true,
@@ -20,47 +38,26 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
-    "forceConsistentCasingInFileNames": true,
-
     "resolveJsonModule": true,
 
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
 
     "sourceMap": true,
-
-    "declaration": true,
-
+  
     "removeComments": false,
 
     "isolatedModules": true,
 
     "noFallthroughCasesInSwitch": true,
-
     "noUncheckedIndexedAccess": true,
 
     "incremental": true,
 
-    "types": ["node"],
-
-  
-
-    "paths": {
-      "@/*": ["./*.ts"],
-      "@config/*": ["./config/*.ts"],
-      "@controllers/*": ["./controllers/*.ts"],
-      "@middleware/*": ["./middleware/*.ts"],
-      "@models/*": ["./models/*.ts"],
-      "@repositories/*": ["./repositories/*.ts"],
-      "@routes/*": ["./routes/*.ts"],
-      "@services/*": ["./services/*.ts"],
-      "@validators/*": ["./validators/*.ts"],
-      "@utils/*": ["./utils/*.ts"],
-      "@constants/*": ["./constants/*.ts"],
-      "@types/*": ["./types/*.ts"]
-    }
+    "types": ["node"]
   },
 
-  "include": ["src"],
+  "include": ["src/**/*"],
 
   "exclude": [
     "node_modules",

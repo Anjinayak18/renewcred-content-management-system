@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import User from "@models/User";
-import { env } from "@config/env";
-import { HTTP_STATUS } from "@constants/httpStatus";
-import logger from "@utils/logger";
+import User from "../models/User";
+import { env } from "../config/env";
+import { HTTP_STATUS } from "../constants/httpStatus";
+import logger from "../utils/logger";
 
 export interface AuthenticatedRequest extends Request {
   user?: {

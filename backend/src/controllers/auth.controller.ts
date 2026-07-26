@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import User from "@models/User";
-import { env } from "@config/env";
-import { HTTP_STATUS } from "@constants/httpStatus";
-import logger from "@utils/logger";
+import User from "../models/User";
+import { env } from "../config/env";
+import { HTTP_STATUS } from "../constants/httpStatus";
+import logger from "../utils/logger";
 
 const generateToken = (userId: string): string => {
   const jwtSecret: string = env.JWT_SECRET as any;

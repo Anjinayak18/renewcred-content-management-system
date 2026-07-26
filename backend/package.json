@@ -4,7 +4,7 @@
   "description": "RenewCred Headless CMS Backend API",
   "private": true,
   "license": "MIT",
-  "type": "module",
+  
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",

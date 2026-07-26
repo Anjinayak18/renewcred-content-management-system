@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
-import User from "@models/User";
-import { HTTP_STATUS } from "@constants/httpStatus";
-import logger from "@utils/logger";
+import User from "../models/User";
+import { HTTP_STATUS } from "../constants/httpStatus";
+import logger from "../utils/logger";
 
 /**
  * ==========================================================

@@ -4,14 +4,14 @@ import {
   deleteFile,
   getFiles,
   uploadFile
-} from "@controllers/media.controller";
+} from "../controllers/media.controller";
 
 import {
   authenticate,
   authorize
-} from "@middleware/auth.middleware";
+} from "../middleware/auth.middleware";
 
-import upload from "@middleware/upload.middleware";
+import upload from "../middleware/upload.middleware";
 
 const router: ExpressRouter = Router();
 

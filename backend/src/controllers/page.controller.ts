@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import Page, { PageStatus } from "@models/Page";
-import { HTTP_STATUS } from "@constants/httpStatus";
-import logger from "@utils/logger";
-import { AuthenticatedRequest } from "@middleware/auth.middleware";
+import Page, { PageStatus } from "../models/Page";
+import { HTTP_STATUS } from "../constants/httpStatus";
+import logger from "../utils/logger";
+import { AuthenticatedRequest } from "../middleware/auth.middleware";
 
 /**
  * ==========================================================
