@@ -46,47 +46,35 @@ const initialState: PageState = {
 export const fetchPages = createAsyncThunk(
   "page/fetchPages",
   async () => {
-    const response = await pageService.getPages();
-    const pages = response.data || response.pages || response;
-    
-    // Transform pages to match frontend interface
-    return Array.isArray(pages) ? pages.map((page: any) => ({
-      id: page._id || page.id,
-      title: page.title,
-      slug: page.slug,
-      content: Array.isArray(page.content) 
-        ? page.content.map((c: any) => c.content || c).join(' ')
-        : page.content || '',
-      status: (page.status || 'DRAFT').toLowerCase() as "draft" | "published",
-      author: typeof page.author === 'object' 
-        ? `${page.author.firstName} ${page.author.lastName}`
-        : page.author || '',
-      createdAt: page.createdAt,
-      updatedAt: page.updatedAt
-    })) : [];
+    return await pageService.getPages();
   }
 );
 
 export const createPage = createAsyncThunk(
   "page/createPage",
-  async (data: Omit<Page, "id" | "author" | "createdAt" | "updatedAt">) => {
+  async (
+    data: Omit<Page, "id" | "author" | "createdAt" | "updatedAt">
+  ) => {
     const response = await pageService.createPage(data);
     const page = response.data || response;
-    
-    // Transform page to match frontend interface
+
     return {
       id: page._id || page.id,
       title: page.title,
       slug: page.slug,
       content: Array.isArray(page.content)
-        ? page.content.map((c: any) => c.content || c).join(' ')
-        : page.content || '',
-      status: (page.status || 'DRAFT').toLowerCase() as "draft" | "published",
-      author: typeof page.author === 'object'
-        ? `${page.author.firstName} ${page.author.lastName}`
-        : page.author || '',
+        ? page.content.map((c: any) => c.content || c).join(" ")
+        : page.content || "",
+      status:
+        (page.status || "DRAFT").toLowerCase() as
+          | "draft"
+          | "published",
+      author:
+        typeof page.author === "object"
+          ? `${page.author.firstName} ${page.author.lastName}`
+          : page.author || "",
       createdAt: page.createdAt,
-      updatedAt: page.updatedAt
+      updatedAt: page.updatedAt,
     };
   }
 );
@@ -102,21 +90,24 @@ export const updatePage = createAsyncThunk(
   }) => {
     const response = await pageService.updatePage(id, data);
     const page = response.data || response;
-    
-    // Transform page to match frontend interface
+
     return {
       id: page._id || page.id,
       title: page.title,
       slug: page.slug,
       content: Array.isArray(page.content)
-        ? page.content.map((c: any) => c.content || c).join(' ')
-        : page.content || '',
-      status: (page.status || 'DRAFT').toLowerCase() as "draft" | "published",
-      author: typeof page.author === 'object'
-        ? `${page.author.firstName} ${page.author.lastName}`
-        : page.author || '',
+        ? page.content.map((c: any) => c.content || c).join(" ")
+        : page.content || "",
+      status:
+        (page.status || "DRAFT").toLowerCase() as
+          | "draft"
+          | "published",
+      author:
+        typeof page.author === "object"
+          ? `${page.author.firstName} ${page.author.lastName}`
+          : page.author || "",
       createdAt: page.createdAt,
-      updatedAt: page.updatedAt
+      updatedAt: page.updatedAt,
     };
   }
 );
@@ -134,21 +125,24 @@ export const publishPage = createAsyncThunk(
   async (id: string) => {
     const response = await pageService.publishPage(id);
     const page = response.data || response;
-    
-    // Transform page to match frontend interface
+
     return {
       id: page._id || page.id,
       title: page.title,
       slug: page.slug,
       content: Array.isArray(page.content)
-        ? page.content.map((c: any) => c.content || c).join(' ')
-        : page.content || '',
-      status: (page.status || 'DRAFT').toLowerCase() as "draft" | "published",
-      author: typeof page.author === 'object'
-        ? `${page.author.firstName} ${page.author.lastName}`
-        : page.author || '',
+        ? page.content.map((c: any) => c.content || c).join(" ")
+        : page.content || "",
+      status:
+        (page.status || "DRAFT").toLowerCase() as
+          | "draft"
+          | "published",
+      author:
+        typeof page.author === "object"
+          ? `${page.author.firstName} ${page.author.lastName}`
+          : page.author || "",
       createdAt: page.createdAt,
-      updatedAt: page.updatedAt
+      updatedAt: page.updatedAt,
     };
   }
 );
@@ -157,15 +151,20 @@ export const publishPage = createAsyncThunk(
 
 const pageSlice = createSlice({
   name: "page",
-
   initialState,
 
   reducers: {
-    setSelectedPage(state, action: PayloadAction<Page | null>) {
+    setSelectedPage(
+      state,
+      action: PayloadAction<Page | null>
+    ) {
       state.selectedPage = action.payload;
     },
 
-    setSearchFilter(state, action: PayloadAction<string>) {
+    setSearchFilter(
+      state,
+      action: PayloadAction<string>
+    ) {
       state.filters.search = action.payload;
     },
 
@@ -190,9 +189,6 @@ const pageSlice = createSlice({
 
   extraReducers(builder) {
     builder
-
-      /* FETCH */
-
       .addCase(fetchPages.pending, (state) => {
         state.loading = true;
       })
@@ -204,16 +200,13 @@ const pageSlice = createSlice({
 
       .addCase(fetchPages.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Unable to fetch pages";
+        state.error =
+          action.error.message || "Unable to fetch pages";
       })
-
-      /* CREATE */
 
       .addCase(createPage.fulfilled, (state, action) => {
         state.pages.unshift(action.payload);
       })
-
-      /* UPDATE */
 
       .addCase(updatePage.fulfilled, (state, action) => {
         const index = state.pages.findIndex(
@@ -225,15 +218,11 @@ const pageSlice = createSlice({
         }
       })
 
-      /* DELETE */
-
       .addCase(deletePage.fulfilled, (state, action) => {
         state.pages = state.pages.filter(
           (page) => page.id !== action.payload
         );
       })
-
-      /* PUBLISH */
 
       .addCase(publishPage.fulfilled, (state, action) => {
         const index = state.pages.findIndex(
