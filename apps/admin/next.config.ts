@@ -9,9 +9,7 @@ const nextConfig: NextConfig = {
 
   productionBrowserSourceMaps: false,
 
-  experimental: {
-    typedRoutes: true
-  },
+  typedRoutes: true,
 
   images: {
     remotePatterns: [
