@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Route } from "next";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 import { toast } from "sonner";
@@ -13,7 +14,7 @@ interface AdminLayoutProps {
   children: ReactNode;
 }
 
-const navigation = [
+const navigation: { label: string; href: Route }[] = [
   {
     label: "Dashboard",
     href: "/dashboard"
