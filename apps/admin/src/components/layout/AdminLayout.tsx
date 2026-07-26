@@ -78,7 +78,7 @@ export default function AdminLayout({
 
         <div className="border-t border-border p-4">
           <p className="font-medium">
-            {user?.name || "Administrator"}
+            {user ? `${user.firstName} ${user.lastName}` : "Administrator"}
           </p>
 
           <p className="mt-1 text-sm text-text-secondary">
@@ -101,7 +101,7 @@ export default function AdminLayout({
           </h2>
 
           <div className="text-sm text-text-secondary">
-            Welcome, {user?.name || "Admin"}
+            Welcome, {user ? `${user.firstName} ${user.lastName}` : "Admin"}
           </div>
         </header>
 
