@@ -31,10 +31,7 @@ const navigation: { label: string; href: Route }[] = [
     label: "Users",
     href: "/users"
   },
-  {
-    label: "Settings",
-    href: "/settings"
-  }
+  
 ];
 
 export default function AdminLayout({
