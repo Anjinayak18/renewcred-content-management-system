@@ -120,10 +120,14 @@ class PageService {
   return response.data;
 }
   async publishPage(id: string) {
-    const response = await api.patch(`/pages/${id}/publish`);
+  const response = await api.patch(`/pages/${id}/publish`);
+  return response.data;
+}
 
-    return response.data;
-  }
+async deletePage(id: string) {
+  const response = await api.delete(`/pages/${id}`);
+  return response.data;
+}
 }
 
 export default new PageService();

@@ -118,6 +118,7 @@ export const deletePage = createAsyncThunk(
     await pageService.deletePage(id);
     return id;
   }
+  
 );
 
 export const publishPage = createAsyncThunk(
