@@ -1,4 +1,8 @@
-import { Router } from "express";
+
+
+import { Router, type Router as ExpressRouter } from "express";
+
+const router: ExpressRouter = Router();
 
 import {
   getUsers,
@@ -12,7 +16,7 @@ import {
   authorize,
 } from "../middleware/auth.middleware.js";
 
-const router = Router();
+
 
 router.get("/", getUsers);
 

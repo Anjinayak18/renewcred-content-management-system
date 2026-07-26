@@ -42,7 +42,7 @@
 
     "types": ["node"],
 
-    "baseUrl": "./src",
+  
 
     "paths": {
       "@/*": ["./*.ts"],
