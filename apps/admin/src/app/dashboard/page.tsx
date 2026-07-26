@@ -130,4 +130,5 @@ export default function DashboardPage() {
       </div>
     </AdminLayout>
   </ProtectedRoute>
-);
+  );
+}
